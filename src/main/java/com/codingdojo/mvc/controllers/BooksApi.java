@@ -41,15 +41,16 @@ public class BooksApi {
  	
  	// first we get the Book ID from our path, we then get the title, description, language, and pages values
      public Book update(@PathVariable("id") Long id, @RequestParam(value="title") String title, @RequestParam(value="description") String desc, @RequestParam(value="language") String lang, @RequestParam(value="pages") Integer numOfPages) {
- 		
+// 		System.out.println(language);
  		// we create a new Book object with the values we passed in
- 		Book book = new Book(title, desc, lang, numOfPages);
+// 		Book book = new Book(id, title, desc, lang, numOfPages);
  		
  		// we then set the ID of the new Book object to equal the ID of the Book we are updating
- 		book.setId(id);
+// 		book.setId(id);
  		
  		// now we can use our bookService to update the book
- 		Book updatedBook = bookService.updateBook(book);
+ 		Book updatedBook = bookService.updateBook(id, title, desc, lang, numOfPages);
+ 		
          return updatedBook;
      }
  	
